@@ -15,7 +15,7 @@ var fight = function (enemyName) {
         // if player picks "skip" confirm and then stop the loop
         if (promptFight === "skip" || promptFight === "SKIP") {
             // confirm player wants to skip
-            var confirmSkip = window.confirm("Are you sure you'd like to quit?");
+            var confirmSkip = window.confirm("Are you sure you'd like to skip?");
 
             // if yes (true), leave fight
             if (confirmSkip) {
@@ -64,7 +64,14 @@ var fight = function (enemyName) {
 };
 
 for(var i = 0; i < enemyNames.length; i++) {
-    var pickedEnemyName = enemyNames[i];
-    enemyHealth = 50;
-    fight(enemyNames[i]);
+    if (playerHealth > 0) {
+        window.alert("Welcome to Robot Gladiators! Round " + (i + 1) );
+        var pickedEnemyName = enemyNames[i];
+        enemyHealth = 50;
+        fight(enemyNames[i]);
+    }
+    else{
+        window.alert("You have lost your robot in battle! Game Over.");
+        break;
+    }
 }
