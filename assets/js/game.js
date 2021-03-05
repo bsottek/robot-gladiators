@@ -121,6 +121,13 @@ var fight = function (enemy) {
                 // award player money for winning
                 playerInfo.money = playerInfo.money + 20;
 
+                //ask if player wants to use the store
+                var storeConfirm = window.confirm("The fight is over, visit the store before the next round?");
+
+                //if yes, call store function
+                if (storeConfirm) {
+                    shop();
+                }
                 // leave while() loop since enemy is dead
                 break;
             } else {
@@ -200,23 +207,13 @@ playerInfo.reset();
             var pickedEnemyObj = enemyInfo[i];
             pickedEnemyObj.health = randomNumber(1, 2);
             fight(pickedEnemyObj);
-
-            //if not through last enemy array item
-            if (i < enemyInfo.length -1 && playerInfo.health > 0) {
-                //ask if player wants to use the store
-                var storeConfirm = window.confirm("The fight is over, visit the store before the next round?");
-
-                //if yes, call store function
-                if (storeConfirm) {
-                    shop();
             }
-        }
         else{
             endGame();
         }
     }
 }
-}
+
 
 var endGame = function() {
     //if player is alive, player wins
